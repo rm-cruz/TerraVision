@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data & outputs (too large for git — share via Drive instead)
+data/*
+!data/.gitkeep
+runs/*
+!runs/.gitkeep
+*.pt
+*.pth
+*.tif
+*.tiff
+*.zip
+
+# OS / editors
+.DS_Store
+.vscode/
+.idea/

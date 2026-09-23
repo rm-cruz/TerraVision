@@ -1,0 +1,40 @@
+# Default experiment: EuroSAT RGB, 3 classes, ResNet-50 transfer learning.
+# Override anything from the command line, e.g.
+#   python train.py --set model.name=simplecnn train.epochs=5
+seed: 42
+output_dir: runs
+
+data:
+  root: data                # where datasets get downloaded / stored
+  dataset: eurosat_rgb      # eurosat_rgb | eurosat_ms | folder
+  folder_dir: null          # required for eurosat_ms / folder: dir with one subfolder per class
+  bands: null               # null = all channels. For .tif data, e.g. [B04, B03, B02, B08] (RGB+NIR)
+  norm: auto                # auto (ImageNet stats for 3-channel, dataset stats otherwise) | imagenet | dataset
+  img_size: 64              # EuroSAT tiles are 64x64; try 128/224 for pretrained nets
+  val_split: 0.15
+  test_split: 0.15
+  limit_per_class: null     # e.g. 200 for fast CPU debugging
+  batch_size: 64
+  num_workers: 2
+  augment: true
+  # Maps our target classes -> original dataset classes. Unlisted classes are dropped.
+  # Set to null to train on the original 10 EuroSAT classes.
+  class_map:
+    Forest: [Forest]
+    Urban: [Highway, Industrial, Residential]
+    Other: [AnnualCrop, HerbaceousVegetation, Pasture, PermanentCrop, River, SeaLake]
+
+model:
+  name: resnet50            # simplecnn | resnet18 | resnet50 | efficientnet_b0
+  pretrained: true
+  freeze_backbone: false    # true = only train the classifier head (linear probe)
+
+train:
+  epochs: 15
+  optimizer: adamw          # adamw | sgd
+  lr: 0.0003
+  weight_decay: 0.0001
+  scheduler: cosine         # cosine | none
+  class_weighted_loss: true # counteracts class imbalance (Other >> Forest)
+  label_smoothing: 0.0
+  early_stopping_patience: 5

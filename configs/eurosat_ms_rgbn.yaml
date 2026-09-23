@@ -1,0 +1,38 @@
+# Multispectral experiment: RGB + near-infrared from EuroSAT-MS (13-band GeoTIFFs).
+# Download EuroSAT_MS.zip manually (see README), unzip into data/, then:
+#   python train.py --config configs/eurosat_ms_rgbn.yaml
+seed: 42
+output_dir: runs
+
+data:
+  root: data
+  dataset: eurosat_ms
+  folder_dir: data/EuroSAT_MS
+  bands: [B04, B03, B02, B08]   # R, G, B, NIR -- keep RGB first so pretrained weights line up
+  norm: dataset
+  img_size: 64
+  val_split: 0.15
+  test_split: 0.15
+  limit_per_class: null
+  batch_size: 64
+  num_workers: 2
+  augment: true
+  class_map:
+    Forest: [Forest]
+    Urban: [Highway, Industrial, Residential]
+    Other: [AnnualCrop, HerbaceousVegetation, Pasture, PermanentCrop, River, SeaLake]
+
+model:
+  name: resnet50
+  pretrained: true
+  freeze_backbone: false
+
+train:
+  epochs: 15
+  optimizer: adamw
+  lr: 0.0003
+  weight_decay: 0.0001
+  scheduler: cosine
+  class_weighted_loss: true
+  label_smoothing: 0.0
+  early_stopping_patience: 5
