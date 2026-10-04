@@ -8,7 +8,7 @@ We classify Sentinel-2 satellite image tiles into land-cover classes (**Forest /
 ## Setup
 
 ```bash
-git clone <repo-url> && cd satellite-landcover
+git clone <repo-url> && cd TerraVision
 python -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 pytest -q                                              # ~10 s, no downloads needed
