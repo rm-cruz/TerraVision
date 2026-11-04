@@ -1,0 +1,61 @@
+{
+  "model": "resnet50",
+  "mode": "from scratch",
+  "img_size": 64,
+  "class_weights": false,
+  "best_val_f1": 0.9818609101402465,
+  "test_accuracy": 0.9834567901234568,
+  "test_macro_f1": 0.9816890235747109,
+  "per_class": {
+    "Forest": {
+      "precision": 0.9757174392935982,
+      "recall": 0.9822222222222222,
+      "f1-score": 0.9789590254706534,
+      "support": 450.0
+    },
+    "Built-up": {
+      "precision": 0.9744645799011532,
+      "recall": 0.9858333333333333,
+      "f1-score": 0.980115990057995,
+      "support": 1200.0
+    },
+    "Other": {
+      "precision": 0.9895090222408729,
+      "recall": 0.9825,
+      "f1-score": 0.985992055195484,
+      "support": 2400.0
+    },
+    "accuracy": 0.9834567901234568,
+    "macro avg": {
+      "precision": 0.9798970138118749,
+      "recall": 0.9835185185185185,
+      "f1-score": 0.9816890235747109,
+      "support": 4050.0
+    },
+    "weighted avg": {
+      "precision": 0.983519011590518,
+      "recall": 0.9834567901234568,
+      "f1-score": 0.9834695511112468,
+      "support": 4050.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      442,
+      0,
+      8
+    ],
+    [
+      0,
+      1183,
+      17
+    ],
+    [
+      11,
+      31,
+      2358
+    ]
+  ],
+  "trainable_params": 23514179,
+  "total_params": 23514179
+}

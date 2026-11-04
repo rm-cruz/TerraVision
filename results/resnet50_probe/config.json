@@ -1,0 +1,21 @@
+{
+  "arch": "resnet50",
+  "pretrained": true,
+  "scratch": false,
+  "freeze": true,
+  "img_size": 64,
+  "class_weights": false,
+  "epochs": 30,
+  "patience": 7,
+  "lr": null,
+  "batch_size": 64,
+  "workers": 0,
+  "seed": 42,
+  "download": true,
+  "root": "data",
+  "data_dir": "data/EuroSAT/2750",
+  "split": "results/simple_cnn/split.json",
+  "out": "results/resnet50_probe",
+  "lr_used": 0.001,
+  "device": "mps"
+}
