@@ -1,0 +1,44 @@
+{
+  "model": "SimpleCNN (from scratch)",
+  "params": 1173987,
+  "epochs_run": 30,
+  "train_time_sec": 1429.5,
+  "best_val_macro_f1": 0.9817121310308526,
+  "test_accuracy": 0.9844444444444445,
+  "test_macro_f1": 0.9836786370121476,
+  "per_class": {
+    "Forest": {
+      "precision": 0.9698275862068966,
+      "recall": 1.0,
+      "f1-score": 0.9846827133479212,
+      "support": 450.0
+    },
+    "Built-up": {
+      "precision": 0.9697712418300654,
+      "recall": 0.9891666666666666,
+      "f1-score": 0.9793729372937293,
+      "support": 1200.0
+    },
+    "Other": {
+      "precision": 0.9949195596951735,
+      "recall": 0.9791666666666666,
+      "f1-score": 0.9869802603947921,
+      "support": 2400.0
+    }
+  },
+  "config": {
+    "data_dir": "data/EuroSAT/2750",
+    "download": true,
+    "root": "data",
+    "out": "results/simple_cnn_weighted",
+    "split": "results/simple_cnn/split.json",
+    "epochs": 30,
+    "batch_size": 64,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "class_weights": true,
+    "patience": 7,
+    "workers": 2,
+    "seed": 42
+  }
+}
