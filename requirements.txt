@@ -1,6 +1,6 @@
-torch>=2.3
-torchvision>=0.18
-numpy
+torch>=2.2.2
+torchvision>=0.17.2
+numpy<2.0.0
 pillow
 tifffile        # reads multispectral GeoTIFFs (EuroSAT-MS, Sentinel-2 exports)
 scikit-learn
